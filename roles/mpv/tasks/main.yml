@@ -1,0 +1,19 @@
+---
+- name: Ensure ~/.config/mpv directory exists
+  file:
+    path: ~/.config/mpv
+    state: directory
+    owner: usmon
+    group: usmon
+    mode: 0755
+
+- name: Copy mpv config
+  copy:
+    src: "{{ item.src }}"
+    dest: "~/.config/mpv/{{ item.dest }}"
+    owner: usmon
+    group: usmon
+    mode: 0744
+  with_items:
+    - { src: input.conf, dest: input.conf }
+    - { src: mpv.conf, dest: mpv.conf }
