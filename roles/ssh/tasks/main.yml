@@ -1,0 +1,30 @@
+---
+- name: Ensure openssh installed
+  package:
+    name: openssh
+    state: latest
+
+- name: Ensure sshd service is enabled
+  service:
+    name: sshd
+    state: started
+    enabled: true
+
+- name: Ensure ~/.ssh directory exist
+  file:
+    path: ~/.ssh
+    state: directory
+    owner: usmon
+    group: usmon
+    mode: 0700
+
+- name: Copy ssh keys
+  copy:
+    src: "{{ item.src }}"
+    dest: "~/.ssh/{{ item.dest }}"
+    owner: usmon
+    group: usmon
+    mode: 0700
+  with_items:
+    - { src: github, dest: github }
+    - { src: github.pub, dest: github.pub }
