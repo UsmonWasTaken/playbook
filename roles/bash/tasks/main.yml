@@ -7,26 +7,24 @@
     group: usmon
     mode: 0755
 
-- name: Copy bash aliases
+- name: Copy bash aliases and functions
   copy:
-    src: aliases
-    dest: ~/.config/bash/aliases
+    src: "{{ item.src }}"
+    dest: "~/.config/bash/{{ item.dest }}"
+    owner: usmon
+    group: usmon
     mode: 0744
+  with_items:
+    - { src: aliases, dest: aliases }
+    - { src: functions, dest: functions }
 
-- name: Copy bash functions
+- name: Copy bashrc and inputrc
   copy:
-    src: functions
-    dest: ~/.config/bash/functions
+    src: "{{ item.src }}"
+    dest: "~/{{ item.dest }}"
+    owner: usmon
+    group: usmon
     mode: 0744
-
-- name: Copy bashrc
-  copy:
-    src: bashrc
-    dest: ~/.bashrc
-    mode: 0744
-
-- name: Copy inputrc
-  copy:
-    src: inputrc
-    dest: ~/.inputrc
-    mode: 0744
+  with_items:
+    - { src: bashrc, dest: .bashrc }
+    - { src: inputrc, dest: .inputrc }

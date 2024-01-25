@@ -1,0 +1,16 @@
+---
+- name: Ensure ~/.config/htop directory exists
+  file:
+    path: ~/.config/htop
+    state: directory
+    owner: usmon
+    group: usmon
+    mode: 0755
+
+- name: Copy htop config
+  copy:
+    src: htoprc
+    dest: ~/.config/htop/htoprc
+    owner: usmon
+    group: usmon
+    mode: 0744

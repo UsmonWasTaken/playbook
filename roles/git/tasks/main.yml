@@ -8,4 +8,6 @@
   copy:
     src: gitconfig
     dest: ~/.gitconfig
+    owner: usmon
+    group: usmon
     mode: 0700
