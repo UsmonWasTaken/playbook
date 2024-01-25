@@ -1,0 +1,34 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+source ~/.config/bash/aliases
+source ~/.config/bash/functions
+
+if [ -z "$XDG_CONFIG_HOME" ] ; then
+    export XDG_CONFIG_HOME="$HOME/.config"
+fi
+if [ -z "$XDG_DATA_HOME" ] ; then
+    export XDG_DATA_HOME="$HOME/.local/share"
+fi
+if [ -z "$XDG_CACHE_HOME" ] ; then
+    export XDG_CACHE_HOME="$HOME/.cache"
+fi
+
+export EDITOR='nvim'
+export TERM=xterm-256color
+
+HISTCONTROL=ignoreboth
+HISTTIMEFORMAT="%Y-%m-%d %T "
+shopt -s autocd
+shopt -s cdspell
+shopt -s cmdhist
+shopt -s dotglob
+shopt -s histappend
+shopt -s expand_aliases
+shopt -s checkwinsize
+
+# Prompt
+PS1="\[\033[1;33m\]  \[\e[1;37m\] \w \[\e[1;36m\]\[\e[0;37m\] "
+
+# Fetch
+pfetch

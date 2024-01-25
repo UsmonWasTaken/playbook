@@ -1,0 +1,41 @@
+# Changing "ls" to "eza"
+alias ls='eza --color=always --group-directories-first --icons=always --grid' # my preferred listing
+alias la='eza -a --color=always --group-directories-first --icons=always --grid'  # all files and dirs
+alias ll='eza -al --color=always --group-directories-first --icons=always'  # long format
+alias lt='eza -aT --color=always --group-directories-first --icons=always' # tree listing
+alias lh='eza -a | grep -E "^\."' # all hidden files and dirs
+
+# Navigation commands
+alias home='cd ~'
+alias dotfiles='cd ~/dotfiles'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Editor
+alias vim='nvim'
+alias svim='sudo nvim'
+
+# Safety
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias rm='rm -I --preserve-root'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Add flags
+alias df='df -h'  # human-readable sizes
+alias free='free -m'  # show in MB
+alias lsblk='lsblk -e7'  # Exclude loop devices
+
+# Grub
+alias grub-install='sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB'
+alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'

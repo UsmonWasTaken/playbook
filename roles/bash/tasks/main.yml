@@ -1,0 +1,32 @@
+---
+- name: Ensure ~/.config/bash directory exists
+  file:
+    path: ~/.config/bash
+    state: directory
+    owner: usmon
+    group: usmon
+    mode: 0755
+
+- name: Copy bash aliases
+  copy:
+    src: aliases
+    dest: ~/.config/bash/aliases
+    mode: 0744
+
+- name: Copy bash functions
+  copy:
+    src: functions
+    dest: ~/.config/bash/functions
+    mode: 0744
+
+- name: Copy bashrc
+  copy:
+    src: bashrc
+    dest: ~/.bashrc
+    mode: 0744
+
+- name: Copy inputrc
+  copy:
+    src: inputrc
+    dest: ~/.inputrc
+    mode: 0744
