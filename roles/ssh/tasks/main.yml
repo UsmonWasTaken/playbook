@@ -1,14 +1,16 @@
 ---
 - name: Ensure openssh installed
+  become: true
   package:
     name: openssh
     state: latest
 
 - name: Ensure sshd service is enabled
+  become: true
   service:
     name: sshd
-    state: started
     enabled: true
+    state: started
 
 - name: Ensure ~/.ssh directory exist
   file:

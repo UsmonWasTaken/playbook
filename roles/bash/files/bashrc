@@ -1,9 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source ~/.config/bash/aliases
-source ~/.config/bash/functions
-
 if [ -z "$XDG_CONFIG_HOME" ] ; then
     export XDG_CONFIG_HOME="$HOME/.config"
 fi
@@ -27,6 +24,9 @@ shopt -s checkwinsize
 
 # Prompt
 PS1="\[\033[1;33m\]  \[\e[1;37m\] \w \[\e[1;36m\]\[\e[0;37m\] "
+
+source "$XDG_CONFIG_HOME/bash/aliases"
+source "$XDG_CONFIG_HOME/bash/functions"
 
 # Fetch
 pfetch

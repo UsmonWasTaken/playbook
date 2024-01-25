@@ -16,9 +16,18 @@
       changed_when: false
       when: ansible_os_family in [ "Archlinux" ]
 
-  roles:
-    - bash
-    - git
-    - ssh
-    - htop
-    - mpv
+  tasks:
+    - name: Set roles
+      set_fact:
+        run_roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or default_roles }}"
+
+    - name: Display roles
+      debug:
+        var: run_roles
+
+    - name: Run roles
+      include_role:
+        name: "{{ roles_item }}"
+      loop_control:
+        loop_var: roles_item
+      with_items: "{{ run_roles }}"

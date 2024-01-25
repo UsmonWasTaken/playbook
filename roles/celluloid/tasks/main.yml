@@ -1,0 +1,25 @@
+---
+- name: Install Celluloid video player
+  become: true
+  package:
+    name: celluloid
+    state: latest
+
+- name: Ensure ~/.config/celluloid directory exists
+  file:
+    path: ~/.config/celluloid
+    state: directory
+    owner: usmon
+    group: usmon
+    mode: 0755
+
+- name: Copy celluloid config
+  copy:
+    src: "{{ item.src }}"
+    dest: "~/.config/celluloid/{{ item.dest }}"
+    owner: usmon
+    group: usmon
+    mode: 0744
+  with_items:
+    - { src: input.conf, dest: input.conf }
+    - { src: mpv.conf, dest: mpv.conf }

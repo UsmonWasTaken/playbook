@@ -1,4 +1,10 @@
 ---
+- name: Ensure htop is installed
+  become: true
+  package:
+    name: htop
+    state: latest
+
 - name: Ensure ~/.config/htop directory exists
   file:
     path: ~/.config/htop
