@@ -1,0 +1,11 @@
+---
+- name: Ensure git installed
+  package:
+    name: git
+    state: latest
+
+- name: Setup git config
+  copy:
+    src: gitconfig
+    dest: ~/.gitconfig
+    mode: 0700
