@@ -10,6 +10,14 @@ set completion-query-items 1000
 # ^C no longer shows on C-c keypress
 set echo-control-characters off
 
+# Command history search
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Move foreward/backward by word
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+
 # Bash Keybindings
 "\C-b":"cd ..\n"
 "\C-h":"cd ~\n"
