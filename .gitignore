@@ -1,4 +1,4 @@
 # Default ignored files
 /.idea
-/vault_password.txt
-
+/vault-pass
+/become-pass

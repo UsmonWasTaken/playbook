@@ -23,3 +23,13 @@
   with_items:
     - { src: input.conf, dest: input.conf }
     - { src: mpv.conf, dest: mpv.conf }
+
+- name: Configure celluloid
+  dconf:
+    key: "/io/github/celluloid-player/celluloid/{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { key: "mpv-config-enable", value: "true" }
+    - { key: "mpv-config-file", value: "'file:///home/usmon/.config/celluloid/mpv.conf'" }
+    - { key: "mpv-input-config-enable", value: "true" }
+    - { key: "mpv-input-config-file", value: "'file:///home/usmon/.config/celluloid/input.conf'" }
